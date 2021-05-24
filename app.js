@@ -4,6 +4,7 @@ const colors = document.getElementsByClassName("jsColor");
 const range = document.getElementById("jsRange");
 const mode = document.getElementById("jsMode");
 const saveBtn = document.getElementById("jsSave");
+const colorPicker = document.getElementById("jsColorPicker");
 
 const INITIAL_COLOR = "#2c2c2c";
 const CANVAS_SIZE = 700;
@@ -30,6 +31,11 @@ function startPainting(){
     painting = true;
 }
 
+function colorChange(color){
+    ctx.strokeStyle = color;
+    ctx.fillStyle = color;
+}
+
 function onMouseMove(event) {
     const x = event.offsetX;
     const y = event.offsetY;
@@ -51,9 +57,7 @@ function onMouseUp(){
 
 function handleColorClick(event){
     const color = event.target.style.backgroundColor;
-    
-    ctx.strokeStyle = color;
-    ctx.fillStyle = color;
+    colorChange(color);
 }
 
 function handleRangeChange(event){
@@ -89,6 +93,11 @@ function saveClick(){
     link.click();
 }
 
+function handleColorPick(e){
+    const color = e.target.value;
+    colorChange(color);
+}
+
 if(canvas) {
     canvas.addEventListener("mousemove", onMouseMove);
     canvas.addEventListener("mousedown", startPainting);
@@ -99,6 +108,8 @@ if(canvas) {
     // 캔버스 마우스 우클릭 메뉴 방지
     canvas.addEventListener("contextmenu", handleCM);
 }
+
+colorPicker.addEventListener("change", handleColorPick);
 
 Array.from(colors).forEach(color => color.addEventListener("click", handleColorClick));
 
