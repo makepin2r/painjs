@@ -64,3 +64,35 @@ body {
 .controls .controls__range {
     margin-bottom: 30px;
 }
+
+/* color picker */
+.controls__color.controls__color--picker {
+    border-radius: 100%;
+    height: 50px;
+    width: 50px;
+    border: none;
+    outline: none;
+    -webkit-appearance: none;
+
+    margin-left: 20px;
+    position: relative;
+}
+.controls__color.controls__color--picker:after {
+    content:"";
+    background: url('./eyedropper.svg')center no-repeat;
+    background-size: 30px auto;
+    display: block;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    bottom: -35px;
+    left: 10px;
+}
+
+.controls__color.controls__color--picker::-webkit-color-swatch-wrapper {
+    padding: 0;	
+}
+.controls__color.controls__color--picker::-webkit-color-swatch {
+    border: none;
+    border-radius: 100%;
+}
