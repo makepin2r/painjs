@@ -12,6 +12,10 @@ const CANVAS_SIZE = 700;
 canvas.width = CANVAS_SIZE;
 canvas.height = CANVAS_SIZE;
 
+// for paint bucket
+const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height)
+const col = {r: 0xff, g: 0xff, b: 0x0, a: 0xff}
+
 // before setting ctx.fillStyle, 기본 배경색 입히기
 ctx.fillStyle = "white";
 ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -75,9 +79,14 @@ function handleModeClick(event){
     }
 }
 
-function handleCanvasClick(){
+function handleCanvasClick(event){
     if(filling){
         ctx.fillRect(0, 0, canvas.width, canvas.height);
+        // const rect = canvas.getBoundingClientRect()
+        // const x = Math.round(event.clientX - rect.left)
+        // const y = Math.round(event.clientY - rect.top)
+        // floodFill(imageData, col, x, y)
+        // ctx.putImageData(imageData, 0, 0)
     }
 }
     
