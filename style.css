@@ -79,7 +79,7 @@ body {
 }
 .controls__color.controls__color--picker:after {
     content:"";
-    background: url('./eyedropper.svg')center no-repeat;
+    background: url('./icons/eyedropper.svg')center no-repeat;
     background-size: 30px auto;
     display: block;
     width: 30px;
